@@ -12,7 +12,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $rootNode = $treeBuilder->root('id4v_menu');
+        $rootNode = $treeBuilder->root('seraph_menu');
         $rootNode
             ->children()
                 ->arrayNode('admin')
@@ -25,7 +25,6 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end();
-
         return $treeBuilder;
     }
 }
