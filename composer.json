@@ -1,0 +1,57 @@
+{
+    "name": "seraph/menu-bundle-2.0",
+    "description": "Menu Bundle that allows you to create menus, and manage them easily.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": ["Menu", "Menu manager", "Front", "Back"],
+    "require": {
+        "php": "^7.1.3",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "knplabs/knp-paginator-bundle": "^2.8",
+        "stof/doctrine-extensions-bundle": "^1.3",
+        "symfony/console": "^4.1",
+        "symfony/flex": "^1.0",
+        "symfony/form": "^4.1",
+        "symfony/framework-bundle": "^4.1",
+        "symfony/lts": "^4@dev",
+        "symfony/orm-pack": "^1.0",
+        "symfony/translation": "^4.1",
+        "symfony/twig-bundle": "^4.1",
+        "symfony/yaml": "^4.1"
+    },
+    "authors": [
+        {
+            "name": "David Rimbault",
+            "email": "rimbault.david@gmail.com"
+        },
+        {
+            "name": "Nils Fradin",
+            "email": "nilsfradin@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Seraph\\Bundle\\MenuBundle\\": ""}
+    },
+    "require-dev": {
+        "symfony/dotenv": "^4.1",
+        "symfony/maker-bundle": "^1.5",
+        "symfony/web-server-bundle": "^4.1"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

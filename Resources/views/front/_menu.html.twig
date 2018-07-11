@@ -1,0 +1,178 @@
+{% extends "Resource/views/base.html.twig" %}
+{% block list %}
+    {% if menu[0].parent|length > 0 %}
+        <ul {{ block('ulDropAttributes') }}>
+            {% for item in menu %}
+                {{ block('list_item') }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <ul {{ block('ulAttributes') }}>
+            {% for item in menu %}
+                {{ block('list_item') }}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
+
+{% block ulAttributes %}
+    {% spaceless %}
+        class="navbar-nav mr-auto"
+    {% endspaceless %}
+{% endblock %}
+
+{% block ulDropAttributes %}
+    {% spaceless %}
+        class="dropdown-menu mr-auto marg-top-short" aria-labelledby="dropdown0{{ item.id }}"
+    {% endspaceless %}
+{% endblock %}
+
+{% block list_item %}
+    {% if item.children|length > 0 %}
+        {% if item.depth >= 2 %}
+            <li {{ block('liDropSubAttributes') }}>
+
+                {{ block('linkDropSub') }}
+                {% set menu=item.children %}
+                {{ block('list')}}
+            </li>
+        {% else %}
+            <li {{ block('liDropAttributes') }}>
+
+                {{ block('linkDrop') }}
+                {% set menu=item.children %}
+                {{ block('list')}}
+            </li>
+        {% endif %}
+
+    {% elseif item.parent|length > 0 %}
+        <li {{ block('liAttributes') }}>
+            {{ block('linkDropItem') }}
+        </li>
+    {% else %}
+        <li {{ block('liAttributes') }}>
+            {{ block('link') }}
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block liAttributes %}
+    {% spaceless %}
+        class="nav-item"
+    {% endspaceless %}
+{% endblock %}
+
+{%  block liDropAttributes %}
+    {% spaceless %}
+        class="nav-item dropdown"
+    {% endspaceless %}
+{% endblock %}
+
+{%  block liDropSubAttributes %}
+    {% spaceless %}
+        class="dropdown-submenu"
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block link %}
+    <a {{ block('linkAttributes') }}>
+        {% if app.request.locale == 'en' %}
+            {{ item.titleUK }}
+        {% elseif app.request.locale == 'fr' %}
+            {{ item.titleFR }}
+        {% endif %}
+    </a>
+{% endblock %}
+
+{% block linkDrop %}
+    <a {{ block('linkDropAttributes') }}>
+        {% if app.request.locale == 'en' %}
+            {{ item.titleUK }}
+        {% elseif app.request.locale == 'fr' %}
+            {{ item.titleFR }}
+        {% endif %}
+    </a>
+{% endblock %}
+
+{% block linkDropSub %}
+    <a {{ block('linkDropSubAttributes') }}>
+        {% if app.request.locale == 'en' %}
+            {{ item.titleUK }}
+        {% elseif app.request.locale == 'fr' %}
+            {{ item.titleFR }}
+        {% endif %}
+    </a>
+{% endblock %}
+
+{% block linkDropItem %}
+    <a {{ block('linkDropItemAttributes') }}>
+        {% if app.request.locale == 'en' %}
+            {{ item.titleUK }}
+        {% elseif app.request.locale == 'fr' %}
+            {{ item.titleFR }}
+        {% endif %}
+    </a>
+{% endblock %}
+
+{% block linkAttributes %}
+    {% spaceless %}
+        href="{{ item.url }}" class="nav-link" target="{{ item.target }}"
+    {% endspaceless %}
+{% endblock %}
+
+{% block linkDropAttributes %}
+    {% spaceless %}
+        id="dropdown0{{ item.id }}" href="#" class="nav-link dropdown-toggle" target="_self"
+    {% endspaceless %}
+{% endblock %}
+
+{% block linkDropSubAttributes %}
+    {% spaceless %}
+        id="dropdown0{{ item.id }}" href="#" class="dropdown-item dropdown-toggle" target="_self"
+    {% endspaceless %}
+{% endblock %}
+
+{% block linkDropItemAttributes %}
+    {% spaceless %}
+        href="{{ item.url }}" class="dropdown-item" target="{{ item.target }}"
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block menu %}
+    <nav {{ block('navAttributes') }}>
+        {{ block('navBrand') }}
+        <div {{ block('divAttributes') }}>
+            {{ block('list') }}
+            {{ block('divLocal') }}
+        </div>
+    </nav>
+{% endblock %}
+
+
+{% block navAttributes %}
+    {% spaceless %}
+        class="navbar navbar-expand-md navbar-dark fixed-top bg-color"
+    {% endspaceless %}
+{% endblock %}
+
+{% block navBrand %}
+    <a href="{{ path('homepage') }}" class="navbar-brand">{{ 'homepage.brand.name'|trans({}, 'front') }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="true" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+{% endblock %}
+
+{% block divAttributes %}
+    {% spaceless %}
+        id="navbarMainMenu" class="collapse navbar-collapse bg-color-blk"
+    {% endspaceless %}
+{% endblock %}
+
+{% block divLocal %}
+    <div class="form-inline my-O my-lg-0 dis-flex-end">
+        <a href="{{ path('changelocal', {'locale' : "fr"}) }}" class="nav-link color-gray">{{ 'local.fr'|trans({}, 'front') }}</a> <span class="color-gray-nohover"> / </span><a href="{{ path('changelocal', {'locale' : "en"}) }}" class="nav-link color-gray">{{ 'local.en'|trans({}, 'front') }}</a>
+    </div>
+{% endblock %}
