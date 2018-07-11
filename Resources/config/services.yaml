@@ -1,4 +1,8 @@
 services:
     seraph.menu.manager:
         class : Seraph\Bundle\MenuBundle\Manager\MenuManager
-        arguments: ['@form.factory', '%seraph_menu.admin.menu_depth']
+        arguments: ['@form.factory', '%seraph_menu.admin.menu_depth'
+    seraph.twig_extension:
+          class: Seraph\Bundle\MenuBundle\Twig\MenuExtension
+          tags:
+              - { name: seraph.menu, priority: 255}
