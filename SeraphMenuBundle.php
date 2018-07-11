@@ -9,7 +9,6 @@ class SeraphMenuBundle extends Bundle
 {
     public function getContainerExtension()
     {
-        return new SeraphMenuExtension();
     }
 
 }
