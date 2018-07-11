@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sERAPH1
- * Date: 09/07/2018
- * Time: 17:24
- */
 
 namespace Seraph\Bundle\MenuBundle\Manager;
 
