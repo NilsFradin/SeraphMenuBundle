@@ -32,10 +32,11 @@ Usage
 2. Organize your menu by adding MenuItems, drag and dropping them
 3. Render your Menu in twig templates
 4. Full exemple of implementation
-```html
-{{ get_menu(<slug-menu>) }}
-```
-Or
-```html
-{{ get_menu(<slug-menu>, <template>) }}
-```
+
+    ```html
+    {{ get_menu(<slug-menu>) }}
+    ```
+    Or
+    ```html
+    {{ get_menu(<slug-menu>, <template>) }}
+    ```
