@@ -1,3 +1,0 @@
-index:
-    path: /
-    controller: Seraph\Bundle\MenuBundle\Controller\DefaultController::index

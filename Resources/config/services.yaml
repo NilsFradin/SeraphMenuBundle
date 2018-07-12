@@ -5,5 +5,4 @@ services:
 
     seraph.menu.twig_extension:
           class: Seraph\Bundle\MenuBundle\Twig\MenuExtension
-          tags:
-              - { name: seraph_function, priority: 255}
+          tags: ['get_menu']
