@@ -6,7 +6,7 @@
  * Time: 11:40
  */
 
-namespace id4v\Bundle\MenuBundle\Twig;
+namespace Seraph\Bundle\MenuBundle\Twig;
 
 use Id4v\Bundle\MenuBundle\Entity\Menu;
 use Id4v\Bundle\MenuBundle\Entity\MenuItem;
