@@ -1,3 +1,9 @@
 services:
-    seraph_menu:
-        class: Seraph\Bundle\MenuBundle\SeraphMenuBundle
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Seraph\Bundle\MenuBundle\:
+        resource: '../../*'
