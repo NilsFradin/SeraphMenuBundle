@@ -1,8 +1,3 @@
 services:
-    seraph_menu.manager:
-        class: Seraph\Bundle\MenuBundle\Manager\MenuManager
-        arguments: ['@form.factory', '%seraph_menu.admin.menu_depth'
-
-    seraph_menu.twig.extension:
-          class: Seraph\Bundle\MenuBundle\Twig\MenuExtension
-          tags: ['twig.extension']
+    seraph_menu:
+        class: Seraph\Bundle\MenuBundle\SeraphMenuBundle

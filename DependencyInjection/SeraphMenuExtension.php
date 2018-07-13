@@ -16,8 +16,5 @@ class SeraphMenuExtension extends Extension
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
-        $container->setParameter('id4v_menu.admin.menu_depth', $configs['admin']['menu_depth']);
-
-        $this->addAnnotatedClassesToCompile(array('Seraph\\Bundle\\MenuBundle\\Twig\\MenuExtension', 'Seraph\\Bundle\\MenuBundle\\Controller'));
     }
 }
