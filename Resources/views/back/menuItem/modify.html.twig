@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+<div class="card-body">
+    <div class="form-group">
+        <label for="contentPage_fr_title">{{ form_label(form.title) }}</label>
+        {{ form_widget(form.title) }}
+    </div>
+    <div class="form-group">
+        <label for="contentPage_fr_descriptive">{{ form_label(form.url) }}</label>
+        {{ form_widget(form.url) }}
+    </div>
+    <div class="form-group">
+        <label for="contentPage_fr_active>{{ form_label(form.active) }}</label>
+        <p>{{ form_widget(form.active) }}</p>
+    </div>
+    <div class="form-group">
+        <label for="contentPage_uk_descriptiveUK">{{ form_label(form.target) }}</label>
+        {{ form_widget(form.target) }}
+    </div>
+</div>
+<div class="card-footer">
+    <button class="btn btn-sm btn-outline-success" type="submit">
+        <i class="ion-checkmark-round pad-right"></i>
+        New
+    </button>
+    <button class="btn btn-sm btn-outline-danger" type="reset">
+        Reset
+    </button>
+    <a class="btn btn-sm btn-outline-gray-600 btn-gray" href="{{ path('serph-list-menuItem', {'id' : menu.id}) }}">
+        Back
+    </a>
+</div>
+{{ form_end(form) }}
