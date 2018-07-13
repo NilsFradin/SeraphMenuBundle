@@ -1,7 +1,7 @@
 SeraphMenuBundle
 ================
 
-SeraphMenuBunlde is the update of Id4vMenuBundle on Symfony 4.1.
+SeraphMenuBunlde is the update of Id4vMenuBundle on Symfony 4.
 
 How it works
 ------------
