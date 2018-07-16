@@ -14,5 +14,8 @@ services:
     seraph_menu.menuItem:
         class: Seraph\Bundle\MenuBundle\Entity\MenuItem
 
+    seraph_menu.type:
+        class: Seraph\Bundle\Menu
+
     Seraph\Bundle\MenuBundle\:
         resource: '../../*'
