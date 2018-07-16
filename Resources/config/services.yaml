@@ -4,18 +4,5 @@ services:
         autoconfigure: true
         public: false
 
-    seraph_menu.manager:
-        class: Seraph\Bundle\MenuBundle\Manager\MenuManger
-        arguments: ['@form.factory', '%seraph_menu.manager.menu_depth%']
-
-    seraph_menu.menu:
-        class: Seraph\Bundle\MenuBundle\Entity\Menu
-
-    seraph_menu.menuItem:
-        class: Seraph\Bundle\MenuBundle\Entity\MenuItem
-
-    seraph_menu.type:
-        class: Seraph\Bundle\Menu
-
     Seraph\Bundle\MenuBundle\:
         resource: '../../*'
