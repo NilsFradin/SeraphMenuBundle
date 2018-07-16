@@ -6,7 +6,13 @@ services:
 
     seraph_menu.manager:
         class: Seraph\Bundle\MenuBundle\Manager\MenuManger
-         arguments: ['@form.factory', '%seraph_menu.manager.menu_depth%']
+        arguments: ['@form.factory', '%seraph_menu.manager.menu_depth%']
+
+    seraph_menu.menu:
+        class: Seraph\Bundle\MenuBundle\Entity\Menu
+
+    seraph_menu.menuItem:
+        class: Seraph\Bundle\MenuBundle\Entity\MenuItem
 
     Seraph\Bundle\MenuBundle\:
         resource: '../../*'
