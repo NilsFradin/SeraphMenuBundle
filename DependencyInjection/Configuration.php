@@ -14,7 +14,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('seraph_menu');
         $rootNode
             ->children()
-                ->arrayNode('admin')
+                ->arrayNode('manager')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->integerNode('menu_depth')
