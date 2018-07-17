@@ -24,9 +24,25 @@ Installation
     ```console
     $ composer require ...
     ```
+2. Add routing of the bundle
+
+    ```yaml
+    # app/config/routes.yaml   
+
+
+    seraph_menu:
+        resource: '@SeraphMenuBundle/Controller'
+        type: annotation
+    ```
+3. Update your database with Menu and MenuItem
+
+    ```console
+    $ php bin/console doctrine:schema:update --force
+    ```
     
 Usage
 -----
+
 
 1. Create your menu in the admin of your website
 2. Organize your menu by adding MenuItems, drag and dropping them
