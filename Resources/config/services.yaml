@@ -6,3 +6,4 @@ services:
 
     App\Seraph\Bundle\MenuBundle\:
         resource: '../../*'
+              exclude: '../src/{Controller,Entity,Form,Resources,Twig}'

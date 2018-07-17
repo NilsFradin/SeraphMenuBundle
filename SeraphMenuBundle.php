@@ -6,10 +6,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class SeraphMenuBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getContainerExtension()
-    {
-    }
 }
