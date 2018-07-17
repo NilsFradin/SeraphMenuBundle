@@ -4,6 +4,6 @@ services:
         autoconfigure: true
         public: false
 
-    App\Seraph\Bundle\MenuBundle\:
+    Seraph\Bundle\MenuBundle\:
         resource: '../../*'
         exclude: '../../{Controller,Entity,Form,Resources,Twig}'
