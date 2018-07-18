@@ -20,6 +20,8 @@
             <thead>
             <tr>
                 <th>Title</th>
+                <th class="">Id</th>
+                <th class="">Depht</th>
                 <th class="tabledrag-hide">Order</th>
                 <th class="tabledrag-hide">Parent</th>
                 <th class="text-center">Actions</th>
@@ -30,8 +32,12 @@
                 <tr class="draggable">
                     <td>
                         <a href="?elem={{ form.vars.data.id }}">{{ form.vars.data.title }}</a>
-                        {{ form_widget(form.id,{"attr":{"class":"item-id hidden"}}) }}
-                        {{ form_widget(form.depth,{"attr":{"class":"item-depth hidden"}}) }}
+                    </td>
+                    <td>
+                        {{ form_widget(form.id,{"attr":{"class":"item-id form-control hidden"}}) }}
+                    </td>
+                    <td>
+                        {{ form_widget(form.depth,{"attr":{"class":"item-depth form-control hidden"}}) }}
                     </td>
                     <td class="tabledrag-hide">{{ form_widget(form.position,{"attr":{"class":"item-position form-control"}}) }}</td>
                     <td class="tabledrag-hide">{{ form_widget(form.parent,{"attr":{"class":"item-parent form-control"}}) }}</td>
@@ -40,7 +46,6 @@
                         <a href="{{ path('seraph-delete-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="color-red">Delete</a>
                     </td>
                 </tr>
-
             {% else %}
                 <tr>
                     <td>No results</td>
