@@ -1,23 +1,31 @@
-{{ form_start(form) }}
-<div class="card-body">
-    <div class="form-group">
-        <label for="menu_name">{{ form_label(form.name) }}</label>
-        {{ form_widget(form.name) }}
+{% extends '@SeraphMenu/back/base.html.twig' %}
+
+{% block title %}
+    Modify menu
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        <div class="card-body">
+            <div class="form-group">
+                <label for="menu_name">{{ form_label(form.name) }}</label>
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-group">
+                <label for="menu_slug">{{ form_label(form.slug) }}</label>
+                {{ form_widget(form.slug) }}
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-outline-success" type="submit">
+                New
+            </button>
+            <button class="btn btn-sm btn-outline-danger btn-reset" type="reset">
+                Reset
+            </button>
+            <a class="btn btn-sm btn-outline-gray-600" href="{{ path('seraph-list-menu') }}">
+                Back
+            </a>
     </div>
-    <div class="form-group">
-        <label for="menu_slug">{{ form_label(form.slug) }}</label>
-        {{ form_widget(form.slug) }}
-    </div>
-</div>
-<div class="card-footer">
-    <button class="btn btn-sm btn-outline-success" type="submit">
-        New
-    </button>
-    <button class="btn btn-sm btn-outline-danger btn-reset" type="reset">
-        Reset
-    </button>
-    <a class="btn btn-sm btn-outline-gray-600" href="{{ path('seraph-list-menu') }}">
-        Back
-    </a>
-</div>
-{{ form_end(form) }}
+    {{ form_end(form) }}
+{% endblock %}

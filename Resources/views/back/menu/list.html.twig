@@ -1,32 +1,39 @@
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
-    <thead>
-    <tr>
-        <th>Id</th>
+{% extends '@SeraphMenu/back/base.html.twig' %}
 
-        <th>Name</th>
-        <th>Slug</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for item in pagination %}
+{% block title %}
+    List menu
+{% endblock %}
+
+{% block body %}
+    <table class="table table-responsive-sm table-bordered table-striped table-sm">
+        <thead>
         <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.slug }}</td>
-            <td class="text-center">
-                <a href="{{ path('seraph-list-menuItem', {'id_menu' : item.id}) }}" class="">Configuration</a>
-                <a href="{{ path('seraph-edit-menu', {"id_menu" : item.id}) }}" class="">Edit</a>
-                <a href="{{ path('seraph-delete-menu', {"id_menu" : item.id}) }}" class=""><i class="ion-trash-b pad-right"></i>Delete</a>
-            </td>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Actions</th>
         </tr>
-    {% else %}
-        <tr>
-            <td>No result</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {% for item in pagination %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.slug }}</td>
+                <td class="text-center">
+                    <a href="{{ path('seraph-list-menuItem', {'id_menu' : item.id}) }}" class="">Configuration</a>
+                    <a href="{{ path('seraph-edit-menu', {"id_menu" : item.id}) }}" class="">Edit</a>
+                    <a href="{{ path('seraph-delete-menu', {"id_menu" : item.id}) }}" class="">Delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>No result</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

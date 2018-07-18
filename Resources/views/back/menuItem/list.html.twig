@@ -1,50 +1,58 @@
 {% extends '@SeraphMenu/back/base.html.twig' %}
+
+{% block title %}
+    List menu item
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset("bundles/seraphmenu/assets/css/jquery.tabledrag.css") }}">
 {% endblock %}
-<div>
-    <button id="fake_submit" class="btn btn-sm btn-outline-gray-600" type="submit">
-        Validate tree
-    </button>
-</div>
-<form id="organize" action="{{ path('seraph-editOrganize-menuItem', {'id_menu' : menu.id}) }}" method="post">
-    <table id="table-tree" class="table table-responsive-sm table-bordered table-striped table-sm">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th class="tabledrag-hide">Order</th>
-            <th class="tabledrag-hide">Parent</th>
-            <th class="text-center">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for form in forms %}
-            <tr class="draggable">
-                <td>
-                    <a href="?elem={{ form.vars.data.id }}">{{ form.vars.data.title }}</a>
-                    {{ form_widget(form.id,{"attr":{"class":"item-id hidden"}}) }}
-                    {{ form_widget(form.depth,{"attr":{"class":"item-depth hidden"}}) }}
-                </td>
-                <td class="tabledrag-hide">{{ form_widget(form.position,{"attr":{"class":"item-position form-control"}}) }}</td>
-                <td class="tabledrag-hide">{{ form_widget(form.parent,{"attr":{"class":"item-parent form-control"}}) }}</td>
-                <td class="txt-center">
-                    <a href="{{ path('seraph-edit-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="pad-right-plus">Edit</a>
-                    <a href="{{ path('seraph-delete-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="color-red">Delete</a>
-                </td>
-            </tr>
 
-        {% else %}
+{% block body %}
+    <div>
+        <button id="fake_submit" class="btn btn-sm btn-outline-gray-600" type="submit">
+            Validate tree
+        </button>
+    </div>
+    <form id="organize" action="{{ path('seraph-editOrganize-menuItem', {'id_menu' : menu.id}) }}" method="post">
+        <table id="table-tree" class="table table-responsive-sm table-bordered table-striped table-sm">
+            <thead>
             <tr>
-                <td>No results</td>
-                <td></td>
-                <td class="tabledrag-hide"></td>
-                <td class="tabledrag-hide"></td>
+                <th>Title</th>
+                <th class="tabledrag-hide">Order</th>
+                <th class="tabledrag-hide">Parent</th>
+                <th class="text-center">Actions</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</form>
+            </thead>
+            <tbody>
+            {% for form in forms %}
+                <tr class="draggable">
+                    <td>
+                        <a href="?elem={{ form.vars.data.id }}">{{ form.vars.data.title }}</a>
+                        {{ form_widget(form.id,{"attr":{"class":"item-id hidden"}}) }}
+                        {{ form_widget(form.depth,{"attr":{"class":"item-depth hidden"}}) }}
+                    </td>
+                    <td class="tabledrag-hide">{{ form_widget(form.position,{"attr":{"class":"item-position form-control"}}) }}</td>
+                    <td class="tabledrag-hide">{{ form_widget(form.parent,{"attr":{"class":"item-parent form-control"}}) }}</td>
+                    <td class="txt-center">
+                        <a href="{{ path('seraph-edit-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="pad-right-plus">Edit</a>
+                        <a href="{{ path('seraph-delete-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="color-red">Delete</a>
+                    </td>
+                </tr>
+
+            {% else %}
+                <tr>
+                    <td>No results</td>
+                    <td></td>
+                    <td class="tabledrag-hide"></td>
+                    <td class="tabledrag-hide"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </form>
+{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
