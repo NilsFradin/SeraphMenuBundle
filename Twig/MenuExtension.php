@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sERAPH1
- * Date: 10/07/2018
- * Time: 11:40
- */
 
 namespace Seraph\Bundle\MenuBundle\Twig;
 
-use Id4v\Bundle\MenuBundle\Entity\Menu;
-use Id4v\Bundle\MenuBundle\Entity\MenuItem;
+use Seraph\Bundle\MenuBundle\Entity\Menu;
+use Seraph\Bundle\MenuBundle\Entity\MenuItem;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 
 class MenuExtension extends \Twig_Extension

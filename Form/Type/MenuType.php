@@ -2,7 +2,6 @@
 
 namespace Seraph\Bundle\MenuBundle\Form\Type;
 
-
 use Seraph\Bundle\MenuBundle\Entity\Menu;
 use Seraph\Bundle\MenuBundle\Entity\MenuItem;
 use Symfony\Component\Form\AbstractType;

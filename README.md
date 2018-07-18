@@ -8,13 +8,13 @@ How it works
 
 A Menu is a tree of MenuItems.
 
-Menus :
-* A Collection of MenuItem.
-* A Name.
+ - Menus :
+    - A Collection of MenuItem.
+    - A Name.
 
-MenuItems :
-* A label to display.
-* A link go when clicked.
+- MenuItems :
+    - A label to display.
+    - A link go when clicked.
 
 Installation
 ------------
@@ -29,7 +29,6 @@ Installation
     ```yaml
     # app/config/routes.yaml   
 
-
     seraph_menu:
         resource: '@SeraphMenuBundle/Controller'
         type: annotation
@@ -40,19 +39,12 @@ Installation
     $ php bin/console doctrine:schema:update --force
     ```
     
-Usage
------
+Documentation
+-------------
 
+You can find in this folder, how you can use the bundle :
 
-1. Create your menu in the admin of your website
-2. Organize your menu by adding MenuItems, drag and dropping them
-3. Render your Menu in twig templates
-4. Full exemple of implementation
-
-    ```html
-    {{ get_menu(<slug-menu>) }}
-    ```
-    Or
-    ```html
-    {{ get_menu(<slug-menu>, <template>) }}
-    ```
+- [Read the documentation for Routes](/Resources/doc/Routes.md)
+- [Read the documentation for Twig Functions](/Ressources/doc/TwigFunctions.md)
+- [Read the documentation for Forms](/Resources/doc/Forms.md)
+- [Read the documentation for Entities](/Resources/doc/Entities.md)
