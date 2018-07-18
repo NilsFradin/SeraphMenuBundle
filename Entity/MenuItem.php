@@ -47,9 +47,9 @@ class MenuItem
     protected $position;
 
     /**
-     * @ORM\Column(name="depht", type="integer", nullable=false)
+     * @ORM\Column(name="depth", type="integer", nullable=false)
      */
-    protected $depht = 1;
+    protected $depth = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity="MenuItem", inversedBy="childrens")
@@ -184,18 +184,18 @@ class MenuItem
     /**
      * @return mixed
      */
-    public function getDepht()
+    public function getdepth()
     {
-        return $this->depht;
+        return $this->depth;
     }
 
     /**
-     * @param mixed $depht
+     * @param mixed $depth
      * @return MenuItem
      */
-    public function setDepht($depht)
+    public function setdepth($depth)
     {
-        $this->depht = $depht;
+        $this->depth = $depth;
         return $this;
     }
 

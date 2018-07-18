@@ -44,7 +44,7 @@ class MenuItemController extends Controller
                 $parent = $repository->find($param['parent']);
                 /** @var MenuItem $item */
                 $item = $repository->find($param['id']);
-                $item->setDepht($param['depht'])
+                $item->setdepth($param['depth'])
                     ->setPosition($param['position'])
                     ->setParent($parent);
                 $this->getDoctrine()->getManager()->persist($item);

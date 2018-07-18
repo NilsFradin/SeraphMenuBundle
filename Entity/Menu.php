@@ -20,7 +20,7 @@ class Menu
     protected $id;
 
     /**
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     protected $name;
 
@@ -69,7 +69,7 @@ class Menu
      */
     public function setName($name)
     {
-        $this->title = $name;
+        $this->name = $name;
         return $this;
     }
 

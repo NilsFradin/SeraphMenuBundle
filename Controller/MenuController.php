@@ -26,7 +26,7 @@ class MenuController extends Controller
             20
         );
 
-        $this->render('@SeraphMenu/back/menu/list.html.twig', array('menus' => $pagination));
+        $this->render('@SeraphMenu/back/menu/list.html.twig', array('pagination' => $pagination));
     }
 
     /**
