@@ -78,41 +78,25 @@
 
 {% block link %}
     <a {{ block('linkAttributes') }}>
-        {% if app.request.locale == 'en' %}
-            {{ item.titleUK }}
-        {% elseif app.request.locale == 'fr' %}
-            {{ item.titleFR }}
-        {% endif %}
+        {{ item.title }}
     </a>
 {% endblock %}
 
 {% block linkDrop %}
     <a {{ block('linkDropAttributes') }}>
-        {% if app.request.locale == 'en' %}
-            {{ item.titleUK }}
-        {% elseif app.request.locale == 'fr' %}
-            {{ item.titleFR }}
-        {% endif %}
+        {{ item.title }}
     </a>
 {% endblock %}
 
 {% block linkDropSub %}
     <a {{ block('linkDropSubAttributes') }}>
-        {% if app.request.locale == 'en' %}
-            {{ item.titleUK }}
-        {% elseif app.request.locale == 'fr' %}
-            {{ item.titleFR }}
-        {% endif %}
+        {{ item.title }}
     </a>
 {% endblock %}
 
 {% block linkDropItem %}
     <a {{ block('linkDropItemAttributes') }}>
-        {% if app.request.locale == 'en' %}
-            {{ item.titleUK }}
-        {% elseif app.request.locale == 'fr' %}
-            {{ item.titleFR }}
-        {% endif %}
+        {{ item.title }}
     </a>
 {% endblock %}
 

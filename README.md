@@ -45,6 +45,6 @@ Documentation
 You can find in this folder, how you can use the bundle :
 
 - [Read the documentation for Routes](/Resources/doc/Routes.md)
-- [Read the documentation for Twig Functions](/Ressources/doc/TwigFunctions.md)
+- [Read the documentation for Twig Functions](/Resources/doc/TwigFunctions.md)
 - [Read the documentation for Forms](/Resources/doc/Forms.md)
 - [Read the documentation for Entities](/Resources/doc/Entities.md)

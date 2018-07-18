@@ -46,9 +46,9 @@ class MenuManager
         {
             $this->drawNodeForm($forms, $item);
 
-            if ($item->getDepth() + 1 < $this->depthInitial + $this->depthMax)
+            if ($item->getDepht() + 1 < $this->depthInitial + $this->depthMax)
             {
-                $this->processDepth($forms, $item->getChildren());
+                $this->processDepth($forms, $item->getChildrens());
             }
         }
     }
