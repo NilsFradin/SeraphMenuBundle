@@ -1,9 +1,14 @@
+{% extends '@SeraphMenu/back/base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("bundles/seraphmenu/assets/css/jquery.tabledrag.css") }}">
+{% endblock %}
 <div>
     <button id="fake_submit" class="btn btn-sm btn-outline-gray-600" type="submit">
         Validate tree
     </button>
 </div>
-<form id="organize" action="{{ path('seraph-editOrganize-menuItem', {'id' : menu.id}) }}" method="post">
+<form id="organize" action="{{ path('seraph-editOrganize-menuItem', {'id_menu' : menu.id}) }}" method="post">
     <table id="table-tree" class="table table-responsive-sm table-bordered table-striped table-sm">
         <thead>
         <tr>
@@ -31,7 +36,7 @@
 
         {% else %}
             <tr>
-                <td>{{ 'general.no-result'|trans({}, 'messages') }}</td>
+                <td>No results</td>
                 <td></td>
                 <td class="tabledrag-hide"></td>
                 <td class="tabledrag-hide"></td>
@@ -44,6 +49,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.2/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/jquery.tabledrag.js') }}"></script>
-    <script type="text/javascript">{{ include("@SeraphMenu/back/menuItem/_tableTree.js.twig") }}</script>
+    <script type="text/javascript" src="{{ asset('bundles/seraphmenu/assets/js/jquery.tabledrag.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/seraphmenu/assets/js/table-tree.js') }}"></script>
 {% endblock %}
