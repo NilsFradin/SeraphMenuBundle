@@ -5,35 +5,60 @@
 {% endblock %}
 
 {% block body %}
-    <table class="table table-responsive-sm table-bordered table-striped table-sm">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Slug</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in pagination %}
+    <table {% block table_attr %} class="table table-bordered table-striped table-sm" {% endblock %}>
+
+        {% block thead %}
+            <thead>
             <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.slug }}</td>
-                <td class="text-center">
-                    <a href="{{ path('seraph-list-menuItem', {'id_menu' : item.id}) }}" class="">Configuration</a>
-                    <a href="{{ path('seraph-edit-menu', {"id_menu" : item.id}) }}" class="">Edit</a>
-                    <a href="{{ path('seraph-delete-menu', {"id_menu" : item.id}) }}" class="">Delete</a>
-                </td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Slug</th>
+                <th class="text-center">Actions</th>
             </tr>
-        {% else %}
-            <tr>
-                <td>No result</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        {% endfor %}
-        </tbody>
+            </thead>
+        {% endblock %}
+
+        {% block tbody %}
+            <tbody>
+            {% for item in pagination %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.slug }}</td>
+
+                    {% block tbody_actions %}
+                        <td class="text-center">
+                            <a href="{{ path('seraph-list-menuItem', {'id_menu' : item.id}) }}" class="text-secondary mr-2"><i class="fas fa-sliders-h mr-1"></i>Configuration</a>
+                            <a href="{{ path('seraph-edit-menu', {"id_menu" : item.id}) }}" class="text-primary mr-2"><i class="fas fa-edit mr-1"></i>Edit</a>
+                            <a href="{{ path('seraph-delete-menu', {"id_menu" : item.id}) }}" class="text-danger mr-2"><i class="far fa-trash-alt mr-1"></i>Delete</a>
+                        </td>
+                    {% endblock %}
+
+                </tr>
+            {% else %}
+
+                {% block tbody_noResults %}
+                    <tr>
+                        <td>No result</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endblock %}
+
+            {% endfor %}
+            </tbody>
+        {% endblock %}
+
     </table>
+
+    {% block page_actions %}
+        <div>
+            <a class="btn btn-sm btn-outline-success" href="{{ path('seraph-add-menu') }}">
+                <i class="fas fa-plus mr-1"></i>
+                New
+            </a>
+        </div>
+    {% endblock %}
+
 {% endblock %}

@@ -10,53 +10,90 @@
 {% endblock %}
 
 {% block body %}
-    <div>
-        <button id="fake_submit" class="btn btn-sm btn-outline-gray-600" type="submit">
-            Validate tree
-        </button>
-    </div>
-    <form id="organize" action="{{ path('seraph-editOrganize-menuItem', {'id_menu' : menu.id}) }}" method="post">
-        <table id="table-tree" class="table table-responsive-sm table-bordered table-striped table-sm">
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th class="">Id</th>
-                <th class="">Depht</th>
-                <th class="tabledrag-hide">Order</th>
-                <th class="tabledrag-hide">Parent</th>
-                <th class="text-center">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for form in forms %}
-                <tr class="draggable">
-                    <td>
-                        <a href="?elem={{ form.vars.data.id }}">{{ form.vars.data.title }}</a>
-                    </td>
-                    <td>
-                        {{ form_widget(form.id,{"attr":{"class":"item-id form-control hidden"}}) }}
-                    </td>
-                    <td>
-                        {{ form_widget(form.depth,{"attr":{"class":"item-depth form-control hidden"}}) }}
-                    </td>
-                    <td class="tabledrag-hide">{{ form_widget(form.position,{"attr":{"class":"item-position form-control"}}) }}</td>
-                    <td class="tabledrag-hide">{{ form_widget(form.parent,{"attr":{"class":"item-parent form-control"}}) }}</td>
-                    <td class="txt-center">
-                        <a href="{{ path('seraph-edit-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="pad-right-plus">Edit</a>
-                        <a href="{{ path('seraph-delete-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="color-red">Delete</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td>No results</td>
-                    <td></td>
-                    <td class="tabledrag-hide"></td>
-                    <td class="tabledrag-hide"></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </form>
+
+    {% block button_valid %}
+        <div>
+            <button id="fake_submit" class="btn btn-sm btn-outline-secondary" type="submit">
+                Validate tree
+            </button>
+        </div>
+    {% endblock %}
+
+    {% block form %}
+        <form id="organize" action="{{ path('seraph-editOrganize-menuItem', {'id_menu' : menu.id}) }}" method="post">
+            <table id="table-tree" class="table table-responsive-sm table-bordered table-striped table-sm">
+
+                {% block thead %}
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th class="">Id</th>
+                        <th class="">Depht</th>
+                        <th class="tabledrag-hide">Order</th>
+                        <th class="tabledrag-hide">Parent</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                    </thead>
+                {% endblock %}
+
+                {% block tbody %}
+                    <tbody>
+                    {% for form in forms %}
+                        <tr class="draggable">
+                            <td>
+                                <a href="?elem={{ form.vars.data.id }}" class="text-primary">{{ form.vars.data.title }}</a>
+                            </td>
+                            <td>
+                                {{ form_widget(form.id,{"attr":{"class":"item-id form-control hidden"}}) }}
+                            </td>
+                            <td>
+                                {{ form_widget(form.depth,{"attr":{"class":"item-depth form-control hidden"}}) }}
+                            </td>
+                            <td class="tabledrag-hide">{{ form_widget(form.position,{"attr":{"class":"item-position form-control"}}) }}</td>
+                            <td class="tabledrag-hide">{{ form_widget(form.parent,{"attr":{"class":"item-parent form-control"}}) }}</td>
+
+                            {% block tbody_actions %}
+                                <td class="text-center">
+                                    <a href="{{ path('seraph-edit-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="text-primary mr-2"><i class="fas fa-edit mr-1"></i>Edit</a>
+                                    <a href="{{ path('seraph-delete-menuItem', {'id_menu' : menu.id,"id_menuItem" :  form.vars.data.id}) }}" class="text-danger"><i class="far fa-trash-alt mr-1"></i>Delete</a>
+                                </td>
+                            {% endblock %}
+
+                        </tr>
+
+                    {% else %}
+
+                        {% block tbody_noResults %}
+                            <tr>
+                                <td>No results</td>
+                                <td></td>
+                                <td class="tabledrag-hide"></td>
+                                <td class="tabledrag-hide"></td>
+                            </tr>
+                        {% endblock %}
+
+                    {% endfor %}
+                    </tbody>
+                {% endblock %}
+
+            </table>
+
+            {% block page_actions %}
+                <div class="d-flex justify-content-between">
+                    <a class="btn btn-sm btn-outline-secondary" href="{{ path('seraph-list-menu') }}">
+                        <i class="fas fa-arrow-left mr-1"></i>
+                        Back
+                    </a>
+                    <a class="btn btn-sm btn-outline-success" href="{{ path('seraph-add-menuItem', {'id_menu' : menu.id}) }}">
+                        <i class="fas fa-plus mr-1"></i>
+                        Back
+                    </a>
+                </div>
+            {% endblock %}
+
+        </form>
+    {% endblock %}
+
 {% endblock %}
 
 {% block javascripts %}

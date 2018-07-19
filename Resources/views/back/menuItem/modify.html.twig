@@ -6,6 +6,8 @@
 
 {% block body %}
     {{ form_start(form) }}
+
+    {% block form_fields %}
         <div class="card-body">
             <div class="form-group">
                 <label for="contentPage_fr_title">{{ form_label(form.title) }}</label>
@@ -24,17 +26,24 @@
                 {{ form_widget(form.target) }}
             </div>
         </div>
+    {% endblock %}
+
+    {% block form_actions %}
         <div class="card-footer">
-            <button class="btn btn-sm btn-outline-success" type="submit">
-                <i class="ion-checkmark-round pad-right"></i>
-                New
+            <button class="btn btn-sm btn-outline-success mr-2" type="submit">
+                <i class="fas fa-plus mr-1"></i>
+                Modify
             </button>
-            <button class="btn btn-sm btn-outline-danger" type="reset">
+            <button class="btn btn-sm btn-outline-danger btn-reset mr-2" type="reset">
+                <i class="fas fa-undo mr-1"></i>
                 Reset
             </button>
-            <a class="btn btn-sm btn-outline-gray-600 btn-gray" href="{{ path('seraph-list-menuItem', {'id_menu' : menu.id}) }}">
+            <a class="btn btn-sm btn-outline-secondary" href="{{ path('seraph-list-menuItem', {'id_menu' : menu.id}) }}">
+                <i class="fas fa-arrow-left mr-1"></i>
                 Back
             </a>
         </div>
+    {% endblock %}
+
     {{ form_end(form) }}
 {% endblock %}
