@@ -29,61 +29,57 @@ All the templates for the back extend 'base.html.twig' and they contains differe
         </body>
     </html>
     ```
- 
-In the back you have to type of templates :
 
 - menu/list.html.twig :
 
     ```html.twig
-        {% block title %} ... {% endblock %}
-        
-        {% block body %}        
-            <table {% block table_attr %} ... {% endblock %}> 
-        
-                {% block thead %} ... {% endblock %}
-                
-                {% block tbody %} 
-                    ...
-                    {% block tbody_actions %} ... {% endblock %}
-                    ...
-                    {% block tbody_noResults %} ... {% endblock %}
-                    ...
-                {% endblock %}
+    {% block title %} ... {% endblock %}
+    
+    {% block body %}        
+        <table {% block table_attr %} ... {% endblock %}> 
+    
+            {% block thead %} ... {% endblock %}
             
-            </table>
-            {% block page_actions %} ... {% endblock %}
-        {% endblock %}
+            {% block tbody %} 
+                ...
+                {% block tbody_actions %} ... {% endblock %}
+                ...
+                {% block tbody_noResults %} ... {% endblock %}
+                ...
+            {% endblock %}
+        
+        </table>
+        {% block page_actions %} ... {% endblock %}
+    {% endblock %}
     ```
 
-- menuItem/list.html.twig :
-
-The block architecture of this template isn't totaly the same.
-In this templates you can override one block stylesheets, button valide, form, under this block, the architecture is the same.  
+- menuItem/list.html.twig :  
 
     ```html.twig
-        {% block title %} ... {% endblock %}
+    {% block title %} ... {% endblock %}
+    
+    {% block stylesheets %} ... {% endblock %}
+    
+    {% block body %}
         
-        {% block stylesheets %} ... {% endblock %}
+        {% block button_valid %} ... {% endblock %}
         
-        {% block body %}
-            
-            {% block button_valid %} ... {% endblock %}
-            
-            {% block form %}    
-                <table {% block table_attr %} ... {% endblock %}> 
-                    ... 
-                </table>
-                         
-                {% block page_actions %} ... {% endblock %}
-                
-            {% endblock %}
+        {% block form %}    
+            <table {% block table_attr %} ... {% endblock %}> 
+                ... 
+            </table>
+                     
+            {% block page_actions %} ... {% endblock %}
             
         {% endblock %}
+        
+    {% endblock %}
     ```
+    
+    The block architecture of this template isn't totaly the same.
+    In this templates you can override one block stylesheets, button valide, form, under this block, the architecture is the same.
 
 - modify.html.twig
-
-The templates menu/modify.html.twig add menuItem/modify.html.twig have the same block architecture.
 
     ```html.twig
     {% block title %} ... {% endblock %}
@@ -95,6 +91,8 @@ The templates menu/modify.html.twig add menuItem/modify.html.twig have the same 
      
     {% endblock %}          
     ```
+
+    The templates menu/modify.html.twig add menuItem/modify.html.twig have the same block architecture.
 
 Front
 ----- 

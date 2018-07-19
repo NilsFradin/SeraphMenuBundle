@@ -14,7 +14,7 @@ class MenuItemOrderingType extends AbstractType
         $builder
             ->add('id', null, array('label' => 'Id', 'attr' => array('class' => 'hidden')))
             ->add('position', null, array('label' => 'Position', 'attr' => array('class' => 'form-control')))
-            ->add('depth', null, array('label' => 'Profondeur', 'attr' => array('class' => 'hidden')))
+            ->add('depth', null, array('label' => 'depth', 'attr' => array('class' => 'hidden')))
             ->add('parent', null, array('choice_label' => 'title', 'label' => 'Parent', 'attr' => array('class' => 'form-control')))
         ;
     }

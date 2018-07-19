@@ -32,6 +32,7 @@ Installation
     seraph_menu:
         resource: '@SeraphMenuBundle/Controller'
         type: annotation
+        prefix: '/admin' 
     ```
 3. Update your database with Menu and MenuItem
 
