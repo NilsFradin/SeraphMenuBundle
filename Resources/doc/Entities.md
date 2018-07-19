@@ -13,7 +13,7 @@ Attributes :
 - \# items : ArrayCollection + OneToMany on MenuItem
 
 
-Function :
+Functions :
 - \+ __construct()
 - \+ get() and set()
 - \+ removeItem(MenuItem)
@@ -36,7 +36,7 @@ Attributes :
 - \# menu : ManyToOne on Menu
 
 
-Function :
+Functions :
 - \+ __construct()
 - \+ get() and set()
 - \+ removeChildren(MenuItem)

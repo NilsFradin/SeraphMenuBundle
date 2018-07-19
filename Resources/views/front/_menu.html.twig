@@ -1,4 +1,4 @@
-{% extends "Resource/views/base.html.twig" %}
+{% extends '@SeraphMenu/front/base.html.twig' %}
 {% block list %}
     {% if menu[0].parent|length > 0 %}
         <ul {{ block('ulDropAttributes') }}>
@@ -29,19 +29,19 @@
 {% endblock %}
 
 {% block list_item %}
-    {% if item.children|length > 0 %}
+    {% if item.childrens|length > 0 %}
         {% if item.depth >= 2 %}
             <li {{ block('liDropSubAttributes') }}>
 
                 {{ block('linkDropSub') }}
-                {% set menu=item.children %}
+                {% set menu=item.childrens %}
                 {{ block('list')}}
             </li>
         {% else %}
             <li {{ block('liDropAttributes') }}>
 
                 {{ block('linkDrop') }}
-                {% set menu=item.children %}
+                {% set menu=item.childrens %}
                 {{ block('list')}}
             </li>
         {% endif %}
@@ -130,7 +130,7 @@
         {{ block('navBrand') }}
         <div {{ block('divAttributes') }}>
             {{ block('list') }}
-            {{ block('divLocal') }}
+
         </div>
     </nav>
 {% endblock %}
@@ -138,12 +138,12 @@
 
 {% block navAttributes %}
     {% spaceless %}
-        class="navbar navbar-expand-md navbar-dark fixed-top bg-color"
+        class="navbar navbar-expand-lg navbar-light bg-light"
     {% endspaceless %}
 {% endblock %}
 
 {% block navBrand %}
-    <a href="{{ path('homepage') }}" class="navbar-brand">{{ 'homepage.brand.name'|trans({}, 'front') }}</a>
+    <a href="{{ path('homepage') }}" class="navbar-brand">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="true" aria-label="Toggle navigation" >
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -151,12 +151,6 @@
 
 {% block divAttributes %}
     {% spaceless %}
-        id="navbarMainMenu" class="collapse navbar-collapse bg-color-blk"
+        id="navbarMainMenu" class="collapse navbar-collapse"
     {% endspaceless %}
-{% endblock %}
-
-{% block divLocal %}
-    <div class="form-inline my-O my-lg-0 dis-flex-end">
-        <a href="{{ path('changelocal', {'locale' : "fr"}) }}" class="nav-link color-gray">{{ 'local.fr'|trans({}, 'front') }}</a> <span class="color-gray-nohover"> / </span><a href="{{ path('changelocal', {'locale' : "en"}) }}" class="nav-link color-gray">{{ 'local.en'|trans({}, 'front') }}</a>
-    </div>
 {% endblock %}

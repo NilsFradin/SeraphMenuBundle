@@ -96,3 +96,58 @@ All the templates for the back extend 'base.html.twig' and they contains differe
 
 Front
 ----- 
+
+If you want you can override all part of this templates.
+
+In the normal using case you need to include bootstrap 4. But bootstrap 4 does not support dropdown, to fix it you need to include this css in your project.
+
+```css
+html, body{
+    height: 100%;
+}
+
+.starter-template {
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.bg-color{
+    background-color: #333;
+}
+
+.dropdown:hover > .dropdown-menu{
+    display: block;
+}
+
+.dropdown:active > .dropdown-menu{
+    display: block;
+}
+
+
+.dropdown-submenu:hover > .dropdown-menu{
+    display: block;
+}
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+
+.dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+
+```
+ 
+If you want to override the provide template, we invite you to see the file [_menu.html.twig](/Resources/views/front/_menu.html.twig)

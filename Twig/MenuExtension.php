@@ -11,18 +11,20 @@ class MenuExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_Function('get_menu', array($this, 'getMenu'), array('needs_environement' => true, 'is_safe' => array('html')))
+            new \Twig_Function('seraph_get_menu', array($this, 'getMenu'), array('needs_environement' => true, 'is_safe' => array('html')))
         );
     }
 
     protected $registry;
+    protected $twig;
 
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, \Twig_Environment $twig)
     {
         $this->registry = $registry;
+        $this->twig = $twig;
     }
 
-    public function getMenu(\Twig_Environment $twig, $slug, $templates = "Resources/views/front/_menu.html.twig" )
+    public function getMenu($slug, $templates = "@SeraphMenu/front/_menu.html.twig")
     {
         if ($slug != '' && $slug != null){
             $qb = $this->registry->getRepository(Menu::class)->createQueryBuilder('m')
@@ -36,6 +38,7 @@ class MenuExtension extends \Twig_Extension
                 $qb = $this->registry->getRepository(MenuItem::class)->createQueryBuilder('mi')
                     ->andWhere('mi.menu = :menu')
                     ->andWhere('mi.parent IS NULL')
+                    ->setParameter('menu', $menu)
                     ->getQuery();
 
                 $menu = $qb->execute();
@@ -47,6 +50,6 @@ class MenuExtension extends \Twig_Extension
         else{
             $menu = "";
         }
-        return $twig->render($templates, array('menu' => $menu));
+        return $this->twig->render($templates, array('menu' => $menu));
     }
 }
