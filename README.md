@@ -22,7 +22,7 @@ Installation
 1. Install it using composer
 
     ```console
-    $ composer require ...
+    $ composer require seraph/menu-bundle-2.0
     ```
 2. Add routing of the bundle
 
