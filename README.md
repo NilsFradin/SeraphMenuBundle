@@ -6,8 +6,12 @@ SeraphMenuBunlde is the update of Id4vMenuBundle on Symfony 4.
 How it works
 ------------
 
-A Menu is a tree of MenuItems.
+A Menu is a tree of MenuItems, this bundle allows the configuration of multiply menu.
 
+All menus can have a different structure. With this bundle you can provide **your own template** or you can use the *default template.*
+
+The default template use **bootstrap 4**, but you can override any parts of this to use anything else.
+ 
  - Menus :
     - A Collection of MenuItem.
     - A Name.
@@ -15,6 +19,8 @@ A Menu is a tree of MenuItems.
 - MenuItems :
     - A label to display.
     - A link go when clicked.
+    
+To read more about the using of this bundle, we invite you to check the [docs](/Resources/doc)
 
 Installation
 ------------
