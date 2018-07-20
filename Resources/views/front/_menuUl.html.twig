@@ -1,0 +1,125 @@
+{% extends '@SeraphMenu/front/base.html.twig' %}
+{% block menu %}
+    {% if menu[0].parent|length > 0 %}
+        <ul {{ block('ulDropAttributes') }}>
+            {% for item in menu %}
+                {{ block('list_item') }}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <ul {{ block('ulAttributes') }}>
+            {% for item in menu %}
+                {{ block('list_item') }}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
+
+{% block ulAttributes %}
+    {% spaceless %}
+        class="navbar-nav mr-auto"
+    {% endspaceless %}
+{% endblock %}
+
+{% block ulDropAttributes %}
+    {% spaceless %}
+        class="dropdown-menu mr-auto marg-top-short" aria-labelledby="dropdown0{{ item.id }}"
+    {% endspaceless %}
+{% endblock %}
+
+{% block list_item %}
+    {% if item.childrens|length > 0 %}
+        {% if item.depth >= 2 %}
+            <li {{ block('liDropSubAttributes') }}>
+
+                {{ block('linkDropSub') }}
+                {% set menu=item.childrens %}
+                {{ block('menu')}}
+            </li>
+        {% else %}
+            <li {{ block('liDropAttributes') }}>
+
+                {{ block('linkDrop') }}
+                {% set menu=item.childrens %}
+                {{ block('menu')}}
+            </li>
+        {% endif %}
+
+    {% elseif item.parent|length > 0 %}
+        <li {{ block('liAttributes') }}>
+            {{ block('linkDropItem') }}
+        </li>
+    {% else %}
+        <li {{ block('liAttributes') }}>
+            {{ block('link') }}
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block liAttributes %}
+    {% spaceless %}
+        class="nav-item"
+    {% endspaceless %}
+{% endblock %}
+
+{%  block liDropAttributes %}
+    {% spaceless %}
+        class="nav-item dropdown"
+    {% endspaceless %}
+{% endblock %}
+
+{%  block liDropSubAttributes %}
+    {% spaceless %}
+        class="dropdown-submenu"
+    {% endspaceless %}
+{% endblock %}
+
+
+{% block link %}
+    <a {{ block('linkAttributes') }}>
+        {{ item.title }}
+    </a>
+{% endblock %}
+
+{% block linkDrop %}
+    <a {{ block('linkDropAttributes') }}>
+        {{ item.title }}
+    </a>
+{% endblock %}
+
+{% block linkDropSub %}
+    <a {{ block('linkDropSubAttributes') }}>
+        {{ item.title }}
+    </a>
+{% endblock %}
+
+{% block linkDropItem %}
+    <a {{ block('linkDropItemAttributes') }}>
+        {{ item.title }}
+    </a>
+{% endblock %}
+
+{% block linkAttributes %}
+    {% spaceless %}
+        href="{{ item.url }}" class="nav-link" target="{{ item.target }}"
+    {% endspaceless %}
+{% endblock %}
+
+{% block linkDropAttributes %}
+    {% spaceless %}
+        id="dropdown0{{ item.id }}" href="#" class="nav-link dropdown-toggle" target="_self"
+    {% endspaceless %}
+{% endblock %}
+
+{% block linkDropSubAttributes %}
+    {% spaceless %}
+        id="dropdown0{{ item.id }}" href="#" class="dropdown-item dropdown-toggle" target="_self"
+    {% endspaceless %}
+{% endblock %}
+
+{% block linkDropItemAttributes %}
+    {% spaceless %}
+        href="{{ item.url }}" class="dropdown-item" target="{{ item.target }}"
+    {% endspaceless %}
+{% endblock %}

@@ -11,7 +11,8 @@ class MenuExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_Function('seraph_get_menu', array($this, 'getMenu'), array('needs_environement' => true, 'is_safe' => array('html')))
+            new \Twig_Function('seraph_get_menu', array($this, 'getMenu'), array('needs_environement' => true, 'is_safe' => array('html'))),
+            new \Twig_Function('seraph_get_menu_ul', array($this, 'getMenuUl'), array('needs_environement' => true, 'is_safe' => array('html')))
         );
     }
 
@@ -25,6 +26,18 @@ class MenuExtension extends \Twig_Extension
     }
 
     public function getMenu($slug, $templates = "@SeraphMenu/front/_menu.html.twig")
+    {
+        $menu = $this->finMenu($slug);
+        return $this->twig->render($templates, array('menu' => $menu));
+    }
+
+    public function getMenuUl($slug)
+    {
+        $menu = $this->finMenu($slug);
+        return $this->twig->render('@SeraphMenu/front/_menuUl.html.twig', array('menu' => $menu));
+    }
+
+    public function finMenu($slug)
     {
         if ($slug != '' && $slug != null){
             $qb = $this->registry->getRepository(Menu::class)->createQueryBuilder('m')
@@ -50,6 +63,6 @@ class MenuExtension extends \Twig_Extension
         else{
             $menu = "";
         }
-        return $this->twig->render($templates, array('menu' => $menu));
+        return $menu;
     }
 }
