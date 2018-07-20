@@ -10,7 +10,7 @@ Without template
 {{ seraph_get_menu('slug_menu') }}
 ```
 
-In this case the function use the template [_menu.html.twig](/Resources/views/front/_menu.html.twig)
+In this case, the function use the template [_menu.html.twig](/Resources/views/front/_menu.html.twig)
 
 With template
 -------------
@@ -19,4 +19,4 @@ With template
 {{ seraph_get_menu('slug_menu', 'template_file') }}
 ```
 
-In this case the function use the template that he found in the second parameter.
+In this case, the function use the template that he found in the second parameter.

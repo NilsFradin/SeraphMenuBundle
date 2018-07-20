@@ -52,7 +52,7 @@ class MenuItemController extends Controller
             }
             $registry->getManager()->flush();
         }
-        return $this->redirectToRoute('seraph-list-menu', array('id_menu' => $id_menu));
+        return $this->redirectToRoute('seraph-list-menuItem', array('id_menu' => $id_menu));
     }
 
     /**
